@@ -6,7 +6,8 @@
   },
   "scripts": {
     "test": "grunt test",
-    "grunt": "grunt"
+    "grunt": "grunt",
+    "start": "lite-server"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
@@ -22,6 +23,7 @@
     "grunt-replace": "^1.0.1",
     "grunt-rev": "^0.1.0",
     "grunt-shell": "^2.1.0",
-    "grunt-usemin": "^3.1.1"
+    "grunt-usemin": "^3.1.1",
+    "lite-server": "^2.4.0"
   }
 }

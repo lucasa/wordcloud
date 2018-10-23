@@ -79,7 +79,7 @@ DashboardView.prototype.handleEvent = function dv_handleEvent(evt) {
       break;
 
     case 'size+':
-      app.data.weightFactor += 0.1;
+      app.data.weightFactor *= 1.1;
 
       app.draw();
       break;
@@ -89,7 +89,7 @@ DashboardView.prototype.handleEvent = function dv_handleEvent(evt) {
         break;
       }
 
-      app.data.weightFactor -= 0.1;
+      app.data.weightFactor *= 0.9;
 
       app.draw();
       break;

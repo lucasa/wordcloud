@@ -6,19 +6,19 @@
 var WordCloudApp = function WordCloudApp() {
   // Special code here to handle non-supported browser case.
   if (!((window.WordFreq && window.WordFreq.isSupported) ||
-        (window.WordFreqSync && window.WordFreqSync.isSupported)) ||
-      !WordCloud.isSupported ||
-      !Object.keys ||
-      !Array.prototype.map ||
-      !Array.prototype.forEach ||
-      !Array.prototype.indexOf ||
-      !Function.prototype.bind ||
-      !('onhashchange' in window)) {
+    (window.WordFreqSync && window.WordFreqSync.isSupported)) ||
+    !WordCloud.isSupported ||
+    !Object.keys ||
+    !Array.prototype.map ||
+    !Array.prototype.forEach ||
+    !Array.prototype.indexOf ||
+    !Function.prototype.bind ||
+    !('onhashchange' in window)) {
     window.onload = function wca_browserDisabled() {
       var view = document.getElementById('wc-browser-support');
       try {
         delete view.hidden;
-      } catch (e) {}
+      } catch (e) { }
       if (view.removeAttribute) {
         view.removeAttribute('hidden');
       }
@@ -88,10 +88,14 @@ var WordCloudApp = function WordCloudApp() {
         return 1 / (Math.cos(thetaPrime) + Math.sin(thetaPrime));
       }
     },
-    { shape: 'triangle-forward',
-      ellipticity: 1 },
-    { shape: 'star',
-      ellipticity: 1 }
+    {
+      shape: 'triangle-forward',
+      ellipticity: 1
+    },
+    {
+      shape: 'star',
+      ellipticity: 1
+    }
   ];
 
   var sansSerifFonts = '"Trebuchet MS", "Heiti TC", "微軟正黑體", ' +
@@ -113,14 +117,14 @@ var WordCloudApp = function WordCloudApp() {
       fontFamily: serifFonts,
       // Sublime Text 2 colors
       color: randomColorGenerator(['#66d9ef', '#a6e22d', '#fd9720', '#a6e22a',
-                                   '#a581ff', '#f92772']),
+        '#a581ff', '#f92772']),
       backgroundColor: '#272822'
     },
     {
       fontFamily: sansSerifFonts,
       // http://colorschemedesigner.com/#3o51Ay9OG-dM6
       color: randomColorGenerator(['#07ABDA', '#63D6F6', '#0F7BDC', '#69B4F7',
-                                  '#00DBB6', '#376F65', '#004438', '#5FF7DD']),
+        '#00DBB6', '#376F65', '#004438', '#5FF7DD']),
       backgroundColor: '#AAF7EA'
     },
     {
@@ -133,8 +137,8 @@ var WordCloudApp = function WordCloudApp() {
       fontFamily: sansSerifFonts,
       // http://colorschemedesigner.com/#0052fMBoqHVtk
       color: randomColorGenerator(['#c30000', '#c37a00', '#650281',
-                                   '#de3333', '#de5c5c', '#7e602c',
-                                   '#633e00', '#481e53']),
+        '#de3333', '#de5c5c', '#7e602c',
+        '#633e00', '#481e53']),
       backgroundColor: '#edd1a4'
     },
     {
@@ -194,7 +198,7 @@ WordCloudApp.prototype.addView = function wca_addView(view) {
   view.app = this;
 };
 WordCloudApp.prototype.addFetcher = function wca_addFetcher(fetcher) {
-  fetcher.types.forEach((function(type) {
+  fetcher.types.forEach((function (type) {
     this.fetchers[type] = fetcher;
   }).bind(this));
   fetcher.app = this;
@@ -251,7 +255,7 @@ WordCloudApp.prototype.switchUIState = function wca_switchUIState(state) {
   }
 
   if (document.activeElement &&
-      document.activeElement !== document.body) {
+    document.activeElement !== document.body) {
     document.activeElement.blur();
   }
 
@@ -260,7 +264,7 @@ WordCloudApp.prototype.switchUIState = function wca_switchUIState(state) {
   UIs.forEach((function showOrHide(viewName) {
     this.views[viewName][
       (this.UIStateViewMap[state].indexOf(viewName) !== -1) ?
-      'show' : 'hide'](currentUIState, state);
+        'show' : 'hide'](currentUIState, state);
   }).bind(this));
 
   this.currentUIState = state;
@@ -285,12 +289,12 @@ WordCloudApp.prototype.handleData = function wca_handleData(text, title) {
   if (WordFreq) {
     this.wordfreq =
       WordFreq(this.wordfreqOption).process(text)
-      .getVolume(function gotVolume(vol) {
-        volume = vol;
-      }).getList((function gotList(list) {
-        this.wordfreq = undefined;
-        this.handleList(list, volume);
-      }).bind(this));
+        .getVolume(function gotVolume(vol) {
+          volume = vol;
+        }).getList((function gotList(list) {
+          this.wordfreq = undefined;
+          this.handleList(list, volume);
+        }).bind(this));
   } else {
     // Use WordFreqSync.
     // Use setTimeout to leave this function loop first.
@@ -344,7 +348,7 @@ WordCloudApp.prototype.draw = function wca_draw() {
 
   var parsedHash = this.parseHash();
   this.logAction('WordCloudApp::draw::' + parsedHash[0],
-                  parsedHash[1].substr(0, 128));
+    parsedHash[1].substr(0, 128));
 };
 WordCloudApp.prototype.getCanvasElement = function wcp_getCanvasElement() {
   return this.views.canvas.canvasElement;
@@ -356,7 +360,7 @@ WordCloudApp.prototype.calculateWeightFactor =
     this.data.weightFactor = Math.sqrt(width * height / vol);
   };
 WordCloudApp.prototype.getWordCloudOption = function wca_getWordCloudOption() {
-  var option = { };
+  var option = {};
 
   var dataKeys = Object.keys(this.data);
   dataKeys.forEach((function copyThemeValues(key) {
@@ -519,14 +523,14 @@ FacebookSDKLoader.prototype.load = function fsl_load(callback) {
   // Load the SDK Asynchronously
   (function loadFacebookSDK(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
+    if (d.getElementById(id)) { return; }
     js = d.createElement(s); js.id = id;
     js.src = '//connect.facebook.net/en_US/all.js';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
   var channelUrl = window.FACEBOOK_CHANNEL_URL ||
     document.location.href.replace(/\/(index.html)?(#.*)?$/i,
-                                   '/facebook-channel.html');
+      '/facebook-channel.html');
 
   window.fbAsyncInit = function fbpv_fbAsyncInit() {
     window.fbAsyncInit = null;
@@ -539,3 +543,39 @@ FacebookSDKLoader.prototype.load = function fsl_load(callback) {
     callback();
   };
 };
+
+String.prototype.replaceAll = function (str1, str2, ignore) {
+  return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2);
+}
+WordCloudApp.prototype._handleData = WordCloudApp.prototype.handleData;
+WordCloudApp.prototype._removeStopWords = function (text) {
+  text = text.toLowerCase().replaceAll('\n', ' ').replaceAll('-', '');
+  console.log('Text size before: ' + text.length);
+  this.stopWords.forEach(w => {
+    console.log('replace word ', w);
+    w = ' '+w+' ';
+    text = text.replaceAll(w, ' ');
+  });
+  console.log('Text size after: ' + text.length);
+  console.log('clean text ', text);
+  return text;
+};
+
+WordCloudApp.prototype.handleData = function (text, title) {
+  text = this._removeStopWords(text);
+  return this._handleData(text, title);
+};
+
+WordCloudApp.prototype.stopWords = [];
+var href = 'assets/stop-words/stop-words.txt';
+let xhr = new XMLHttpRequest();
+xhr.open('GET', href, true);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    let text = xhr.responseText;
+    WordCloudApp.prototype.stopWords = text.split(/\r\n|\n/);
+    // alert(WordCloudApp.prototype.stopWords.length);
+    console.log('stop words', WordCloudApp.prototype.stopWords);
+  }
+};
+xhr.send(null);

@@ -108,12 +108,12 @@ window.onerror = function onerror(message, url, line) {
   sourceDialogView.addPanel(new CPPanelView());
   sourceDialogView.addPanel(new FilePanelView());
   sourceDialogView.addPanel(new WikipediaPanelView());
-  sourceDialogView.addPanel(new GooglePlusPanelView());
+  // sourceDialogView.addPanel(new GooglePlusPanelView());
 
   app.addFetcher(new TextFetcher());
   app.addFetcher(new FileFetcher());
   app.addFetcher(new ListFetcher());
   app.addFetcher(new COSCUPFetcher());
   app.addFetcher(new WikipediaFetcher());
-  app.addFetcher(new GooglePlusFetcher());
+  // app.addFetcher(new GooglePlusFetcher());
 })();

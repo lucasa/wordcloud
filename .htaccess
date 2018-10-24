@@ -1,2 +1,0 @@
-# Redirect old URLs to the current one
-RedirectMatch permanent ^(.*/)(zh|en) $1

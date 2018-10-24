@@ -15,8 +15,10 @@ module.exports = function(grunt) {
           { expand: true, src: '.htaccess', dest: '<%= distDir %>' },
           { expand: true, src: '*', dest: '<%= distDir %>', filter: 'isFile' },
           { expand: true, src: 'locales/*', dest: '<%= distDir %>' },
-          { expand: true, src: 'assets/*.css',
+          { expand: true, src: 'assets/*.css',        	  
             dest: '<%= distDir %>', filter: 'isFile' },
+          { expand: true, src: 'assets/**',        	  
+            dest: '<%= distDir %>', filter: 'isFile' },           
           { expand: true, src: 'assets/images/*', dest: '<%= distDir %>' },
           { expand: true,
             src: 'assets/canvas-to-blob/canvas-to-blob.min.js',
@@ -142,7 +144,11 @@ module.exports = function(grunt) {
   // Build web app for production
   grunt.registerTask('default', [
     'checkvars', 'clean', 'copy', 'useminPrepare',
-    'concat', 'uglify', 'rev', 'usemin', 'replace']);
+    'concat', 
+//    'uglify', 
+    'rev', 
+//    'usemin', 
+    'replace']);
 
   // Quick shell command to rsync the code to my site
   grunt.registerTask('deploy-timc', ['shell:deploy']);

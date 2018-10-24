@@ -34,21 +34,37 @@
 
   <link rel="shortcut icon" href="./favicon.ico" />
 
-  <link rel="stylesheet" type="text/css" href="./assets/8a07a86f.first-screen.css">
+  <link rel="stylesheet" type="text/css" href="./assets/first-screen.css">
   <!-- Le styles -->
   <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./assets/5dcf3829.wordcloud.css">
+  <link rel="stylesheet" type="text/css" href="./assets/wordcloud.css">
 
-  <link rel="prefetch" type="application/l10n" href="./locales/locales.ini?_=jnjg2djz" />
+  <link rel="prefetch" type="application/l10n" href="./locales/locales.ini?_=jnn2fbvz" />
 
   <link rel="payment" href="https://flattr.com/submit/auto?url=https%3A%2F%2Fgithub.com%2Ftimdream%2Fwordcloud&amp;user_id=timdream" type="text/html" />
 
   <!-- For browser without Web Workers support, run the calculation
        on the main event loop with the worker script. -->
-  <script src="./assets/wordfreq/src/wordfreq.worker.js?_=jnjg2djz" defer></script>
+  <script src="./assets/wordfreq/src/wordfreq.worker.js?_=jnn2fbvz" defer></script>
+  
+  <script src="./assets/latinise/latinise.js" defer></script>
 
-  <script defer src="assets/c09a4936.app.min.js"></script>
+  <!-- build:js assets/app.min.js -->
+  <script src="./assets/vars.js" defer></script>
+  <script src="./assets/web-l10n/l10n.js" defer></script>
+  <script src="./assets/wordfreq/src/wordfreq.js" defer></script>
+  <script src="./assets/wordcloud2.js/src/wordcloud2.js" defer></script>
+  <script src="./assets/app.js" defer></script>
+  <script src="./assets/views.js" defer></script>
+  <script src="./assets/canvas-view.js" defer></script>
+  <script src="./assets/source-dialog-view.js" defer></script>
+  <script src="./assets/dashboard-view.js" defer></script>
+  <script src="./assets/sharer-dialog-view.js" defer></script>
+  <script src="./assets/panels.js" defer></script>
+  <script src="./assets/fetchers.js" defer></script>
+  <script src="./assets/start.js" defer></script>
+  <!-- endbuild -->
 
 </head>
 <body>

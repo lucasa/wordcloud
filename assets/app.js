@@ -544,17 +544,28 @@ FacebookSDKLoader.prototype.load = function fsl_load(callback) {
   };
 };
 
+String.prototype.latinise = function() {
+	return this.replace(/[^A-Za-z0-9]/g, function(x) { return Latinise.latin_map[x] || x; })
+};
+ 
 String.prototype.replaceAll = function (str1, str2, ignore) {
   return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, "\\$&"), (ignore ? "gi" : "g")), (typeof (str2) == "string") ? str2.replace(/\$/g, "$$$$") : str2);
 }
 WordCloudApp.prototype._handleData = WordCloudApp.prototype.handleData;
 WordCloudApp.prototype._removeStopWords = function (text) {
   text = text.toLowerCase().replaceAll('\n', ' ').replaceAll('-', '');
+  text = text.replaceAll('.', ' ').replaceAll(',', ' ').replaceAll('ç', 'c');
+  text = text.replaceAll('(', ' ').replaceAll(')', ' ').replaceAll('|', ' ');
+  text = text.replaceAll('[', ' ').replaceAll(']', ' ').replaceAll('  ', ' ');
+
   console.log('Text size before: ' + text.length);
   this.stopWords.forEach(w => {
-    console.log('replace word ', w);
+    // console.log('replace word ', w);
     w = ' '+w+' ';
-    text = text.replaceAll(w, ' ');
+    if(text.indexOf(w) > 0) {
+      console.log('Removing the word: ', w);
+      text = text.replaceAll(w, ' ');
+    }
   });
   console.log('Text size after: ' + text.length);
   console.log('clean text ', text);
@@ -562,6 +573,8 @@ WordCloudApp.prototype._removeStopWords = function (text) {
 };
 
 WordCloudApp.prototype.handleData = function (text, title) {
+  text = this._removeStopWords(text);  
+  text = text.latinise();
   text = this._removeStopWords(text);
   return this._handleData(text, title);
 };

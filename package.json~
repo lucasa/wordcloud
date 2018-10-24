@@ -1,0 +1,28 @@
+{
+  "name": "wordcloud-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timdream/wordcloud.git"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "grunt": "grunt",
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-gh-pages": "^2.0.0",
+    "grunt-replace": "^1.0.1",
+    "grunt-rev": "^0.1.0",
+    "grunt-shell": "^2.1.0",
+    "grunt-usemin": "^3.1.1"
+  }
+}
